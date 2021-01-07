@@ -6,9 +6,11 @@ COPY package*.json ./
 
 RUN npm install
 
+COPY . .
+
 EXPOSE 8080
 
-RUN node index.js
+CMD ["npm", "run", "start"]
 
 FROM nginx:alpine
 

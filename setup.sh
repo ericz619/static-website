@@ -21,11 +21,18 @@ sudo add-apt-repository \
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 
+echo "INSTALLING NODEJS"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+. ~/.nvm/nvm.sh
+nvm install node
+node -e "console.log('Running Node.js ' + process.version)"
+
 echo "DOWNLOADING REPO"
-git clone https://github.com/ericz99/static-website.git
-cd static-website
-npm install
-sudo docker build -q --force-rm -t ericz99/static-website:latest
-sudo docker -d -p 80:8080 ericz99/static-website:latest
+git clone https://github.com/ericz1232/static-website.git 
+    && cd static-website 
+    && npm install
+    && sudo docker build -t ericz99/static-website:latest . --no-cache
+    && sudo docker -d -p 80:8080 ericz99/static-website:latest
+
 private_ip=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
 curl "http://$private_ip.com"
