@@ -1,0 +1,9 @@
+node_modules
+
+my-key-pair
+my-key-pair.pub
+
+.terraform
+.terraform.*
+
+terraform.*

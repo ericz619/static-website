@@ -1,0 +1,6 @@
+1. use an cicd tool either circleci or github action etc.
+2. make an test run
+3. create an vpc with 6 public subnets, 1 private subnets
+4. create an ec2 instance - write an bash script that runs your docker container etc
+5.and an alb load balancer that assoicate to the instance
+6. also attach an domain onto the load balancer
