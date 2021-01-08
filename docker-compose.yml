@@ -1,20 +1,30 @@
-version: "3.9"
+version: "3.3"
 
 services:
   web:
     build: .
     image: static-website
     container_name: static-website
+    restart: unless-stopped
     expose:
       - "8080"
-    depends_on:
-      - api
+    networks:
+      - app-network
+
   proxy:
     image: nginx:alpine
     container_name: web-proxy
+    restart: unless-stopped
     volumes:
       - ./proxy.conf:/etc/nginx/conf.d/default.conf
     ports:
-      - 80:8080
+      - 80:80
+      - 443:443
     depends_on:
       - web
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
