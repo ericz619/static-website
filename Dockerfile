@@ -12,6 +12,3 @@ EXPOSE 8080
 
 CMD ["npm", "run", "start"]
 
-FROM nginx:alpine
-
-COPY proxy.conf /etc/nginx/conf.d/default.conf
