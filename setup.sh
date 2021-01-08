@@ -11,6 +11,7 @@ sudo apt-get install \
     gnupg-agent \
     software-properties-common -y
 
+# Install docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo apt-key fingerprint 0EBFCD88
 
@@ -20,6 +21,11 @@ sudo add-apt-repository \
    stable"
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
+
+# Install docker-compose
+curl -L https://github.com/docker/compose/releases/download/1.21.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+
 
 # echo "INSTALLING NODEJS"
 # curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash 
