@@ -27,10 +27,9 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 # node -e "console.log('Running Node.js ' + process.version)"
 
 echo "DOWNLOADING REPO"
-git clone https://github.com/ericz1232/static-website.git 
-cd static-website
-
-sudo docker build -t ericz99/static-website:latest . --no-cache 
+git clone https://github.com/ericz1232/static-website.git &&
+cd static-website &&
+sudo docker build -t ericz99/static-website:latest . --no-cache &&
 sudo docker run -d -p 80:8080 ericz99/static-website:latest
 # private_ip=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
 # curl "http://$private_ip.com"
